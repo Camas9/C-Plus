@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace  std;
+
+int main()
+{
+    int i,y,m,d,num;
+	int s;
+	int days[12] ={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    cin >> s >> num;
+    y=s/10000;
+    m=s%10000/100;
+    d=s%100;
+            while(num > days[m-1])
+            {
+                if(y%400 == 0 || (y%4==0 && y%100!=0))
+                    days[1] =29;
+                else
+                    days[1] = 28;
+                num -= days[m-1]-d;
+                d=0;
+                m++;
+                if(m==13)
+                {
+                    y++;
+                    m=1;
+                }
+            }
+	 if ((y/10000)>0) cout<<"out of limitation!";
+	 else printf("%04d%02d%02d\n",y,m,num);
+    return 0;
+}

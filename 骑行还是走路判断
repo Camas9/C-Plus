@@ -1,0 +1,25 @@
+#include <iostream>
+​
+using namespace std;  
+​
+int main(){
+​
+   int n;
+   double walk_time;
+   double bike_time; 
+   
+   cin>>n;
+   
+   bike_time = 27+23+n/3.0;
+   walk_time = n/1.2;
+   
+   if(bike_time>walk_time)
+      cout<<"Walk"<<endl;
+   else if(bike_time<walk_time)
+      cout<<"Bike"<<endl;
+   else
+      cout<<"All"<<endl; 
+​
+   return 0;    
+   
+}

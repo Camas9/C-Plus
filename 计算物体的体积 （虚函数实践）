@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+​
+const double PI=3.1415;
+​
+class Circle
+{
+    public:virtual double Volume()=0;
+};
+​
+class Sphere:public Circle  //圆体
+{
+    public:
+     Sphere(double r)
+        {
+           R=r;
+        }
+    
+    double Volume()
+    {
+    return 4*PI*R*R*R/3;
+    }
+   
+   private:
+     double R;
+};
+​
+class Cylinder:public Circle  //圆柱
+{
+    public:
+        Cylinder(double r,double h)
+        {
+            R=r;
+            H=h; 
+        }
+​
+        double Volume()
+        {
+            return PI*R*R*H;
+        }
+​
+    private:
+        double R,H;
+};
+​
+class Cone:public Circle  //圆锥
+{
+    public:
+        Cone(double r,double h)
+        {
+            R=r;
+            H=h;
+        }
+    
+        double Volume()
+        {
+            return PI*R*R*H/3;
+        }
+    
+    private:
+        double R,H;
+};
+​
+double Total(Circle *s[],int n)
+{
+    double sum=0;
+    for(int i=0;i<n;i++)
+    {
+     sum+=s[i]->Volume();
+    }
+    return sum;
+}
+​
+int main()
+{
+    Circle *s[3];
+    s[0]=new Sphere(2.0);//球体
+    s[1]=new Cylinder(2.0,4.0);//圆柱
+    s[2]=new Cone(2.0,8.0);//圆锥
+    double sum=Total(s,3);
+    cout<<"sum="<<sum<<endl;
+    return 0;
+}
+​
